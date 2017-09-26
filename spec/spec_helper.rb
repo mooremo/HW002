@@ -10,7 +10,7 @@ RSpec.configure do |config|
   end
 end
 
-def generate_row(delimeter = ' ')
+def generate_row(delimeter = [' ', ' | ', ', '].sample)
   row = []
   row << Faker::Name.last_name
   row << Faker::Name.first_name
