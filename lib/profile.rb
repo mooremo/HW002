@@ -12,7 +12,7 @@ class Profile
     @first_name = attributes['first_name']
     @gender = attributes['gender'] && attributes['gender'].downcase
     @favorite_color = attributes['favorite_color'] && attributes['favorite_color'].downcase
-    @date_of_birth = attributes['date_of_birth'] && DateTime.parse(attributes['date_of_birth'].to_s)
+    @date_of_birth = attributes['date_of_birth'] && DateTime.strptime(attributes['date_of_birth'].to_s, '%m/%d/%Y')
   end
 
   def self.parse(row)

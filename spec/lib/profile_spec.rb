@@ -39,7 +39,7 @@ describe 'Profile' do
       expect(profile.first_name).to eq('Ray')
       expect(profile.gender).to eq('female')
       expect(profile.favorite_color).to eq('blue')
-      expect(profile.date_of_birth).to eq (DateTime.parse('4/12/2017'))
+      expect(profile.date_of_birth).to eq (DateTime.strptime('4/12/2017', '%m/%d/%Y'))
     end
 
     it 'takes a well formated record row seperated with "," and returns a valid Profile' do
@@ -49,7 +49,7 @@ describe 'Profile' do
       expect(profile.first_name).to eq('Ray')
       expect(profile.gender).to eq('female')
       expect(profile.favorite_color).to eq('blue')
-      expect(profile.date_of_birth).to eq (DateTime.parse('4/12/2017'))
+      expect(profile.date_of_birth).to eq (DateTime.strptime('4/12/2017', '%m/%d/%Y'))
     end
 
     it 'takes a well formated record row seperated with " " and returns a valid Profile' do
@@ -59,7 +59,7 @@ describe 'Profile' do
       expect(profile.first_name).to eq('Ray')
       expect(profile.gender).to eq('female')
       expect(profile.favorite_color).to eq('blue')
-      expect(profile.date_of_birth).to eq (DateTime.parse('4/12/2017'))
+      expect(profile.date_of_birth).to eq (DateTime.strptime('4/12/2017', '%m/%d/%Y'))
     end
   end
 end
