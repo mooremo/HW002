@@ -3,7 +3,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     first_name { Faker::Name.first_name }
     gender { ['male', 'female'].sample }
-    favorite_color { Faker::Color.color_name.downcase }
+    favorite_color { Faker::Color.color_name.downcase.tr!(" ", "_") }
     date_of_birth { Faker::Date.backward }
   end
 end

@@ -15,7 +15,7 @@ def generate_row(delimeter = [' ', ' | ', ', '].sample)
   row << Faker::Name.last_name
   row << Faker::Name.first_name
   row << ['male','female'].sample
-  row << Faker::Color.color_name
+  row << Faker::Color.color_name.downcase.tr(' ', '_')
   row << Faker::Date.backward.strftime('%-m/%-d/%Y')
   row.join(delimeter)
 end
