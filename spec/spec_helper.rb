@@ -19,3 +19,15 @@ def generate_row(delimeter = [' ', ' | ', ', '].sample)
   row << Faker::Date.backward.strftime('%-m/%-d/%Y')
   row.join(delimeter)
 end
+
+def pipe_delimited_row_fixture
+  'Bernhard | Ray | female | blue | 4/12/2017'
+end
+
+def comma_delimited_row_fixture
+  'Bernhard, Ray, female, blue, 4/12/2017'
+end
+
+def space_delimited_row_fixture
+  'Bernhard Ray female blue 4/12/2017'
+end
