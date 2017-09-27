@@ -19,7 +19,7 @@ class Profile
     # can use this regex because:
     # "You may assume that the delimiters (commas, pipes and spaces) do not appear anywhere in the data values themselves."
     # ASSUMPTION: It will never be given a malformed row. this allows me to avoid validations or checks and exclude exception handling.
-    match_data = row.match(/^(?<last_name>\w+)\W+(?<first_name>\w+)\W+(?<gender>\w+)\W+(?<favorite_color>\w+)\W+(?<date_of_birth>[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4})$/)
+    match_data = row.match(/^(?<last_name>[\w']+)\W+(?<first_name>[\w']+)\W+(?<gender>\w+)\W+(?<favorite_color>\w+)\W+(?<date_of_birth>[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4})$/)
     new(match_data.names.zip(match_data.captures).to_h)
   end
 end
