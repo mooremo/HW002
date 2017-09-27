@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'awesome_print'
+
+require_relative '../lib/profile'
+
+options = {}
+
+opt_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: 'record_sort FILE [OPTIONS]"
+  opts.separator  ""
+  opts.separator  "Options"
+  # TODO: Define sorting options
+end
+
+opt_parser.parse!
+
+profiles = []
+
+File.readlines(ARGV[0]).each do |line|
+  profiles << Profile.parse(line)
+end
+
+ap profiles
