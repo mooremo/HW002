@@ -23,6 +23,10 @@ class Profile
       date_of_birth: date_of_birth.strftime('%-m/%-d/%Y') }
   end
 
+  def to_json
+    to_hash.to_json
+  end
+
   def self.parse(row)
     # can use this regex because:
     # "You may assume that the delimiters (commas, pipes and spaces) do not appear anywhere in the data values themselves."

@@ -13,4 +13,8 @@ class ProfileCollection
       profiles.sort! {|a,b| sort_by_attributes.map{|x| b.send(x)} <=> sort_by_attributes.map{|x| a.send(x)}}
     end
   end
+
+  def to_json
+    '[' + profiles.map(&:to_json).join(', ') + ']'
+  end
 end
