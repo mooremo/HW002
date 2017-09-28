@@ -4,6 +4,7 @@ require 'optparse'
 require 'awesome_print'
 
 require_relative '../lib/profile'
+require_relative '../lib/profile_collection'
 
 options = {}
 
@@ -11,15 +12,34 @@ opt_parser = OptionParser.new do |opts|
   opts.banner = "Usage: 'record_sort FILE [OPTIONS]"
   opts.separator  ""
   opts.separator  "Options"
-  # TODO: Define sorting options
+
+  opts.on('-s', '--sortby SORT_BY', 'the attribute(s) that you want to sort by in the preffered order') do |sort_by_attributes|
+    options[:sort_by_attributes] = sort_by_attributes.split(',')
+  end
+
+  opts.on('-o', '--order ORDER', 'the order that the attributes should be sorted in, ASC or DESC') do |order|
+    if ['ASC', 'DESC'].include?(order)
+      options[:order] = order
+    else
+      raise "'#{order}' is not a valid sort order. Select either 'ASC' or 'DESC'."
+    end
+  end
 end
 
 opt_parser.parse!
 
-profiles = []
+profile_collection = ProfileCollection.new
 
 File.readlines(ARGV[0]).each do |line|
-  profiles << Profile.parse(line)
+  profile_collection.profiles << Profile.parse(line)
 end
 
-ap profiles
+if options[:sort_by_attributes]
+  if options[:order]
+    ap profile_collection.sort!(options[:sort_by_attributes], options[:order])
+  else
+    ap profile_collection.sort!(options[:sort_by_attributes])
+  end
+else
+  ap profile_collection.profiles
+end
